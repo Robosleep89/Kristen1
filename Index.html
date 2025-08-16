@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing Journey Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        
+        .chart-container {
+            margin: 30px 0;
+            position: relative;
+            height: 400px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .milestone-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .milestone-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .milestone-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .milestone-date {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .milestone-description {
+            line-height: 1.6;
+        }
+        
+        .insights-section {
+            background: #f7fafc;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .insights-title {
+            color: #4a5568;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        
+        .insight-item {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 3px solid #764ba2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .growth-indicator {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin: 5px 5px 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Healing Journey</h1>
+        <p class="subtitle">A visualization of growth, insights, and resilience</p>
+        
+        <div class="chart-container">
+            <canvas id="healingChart"></canvas>
+        </div>
+        
+        <div class="milestone-grid">
+            <div class="milestone-card">
+                <div class="milestone-title">Recognition & Departure</div>
+                <div class="milestone-date">Early Period</div>
+                <div class="milestone-description">
+                    Recognized the replacement strategy and manipulation patterns. Made the courageous decision to leave for Chicago and start fresh rather than accept being phased out.
+                </div>
+            </div>
+            
+            <div class="milestone-card">
+                <div class="milestone-title">No-Contact Implementation</div>
+                <div class="milestone-date">After Letter Response</div>
+                <div class="milestone-description">
+                    Started no-contact after vulnerable letter was dismissed as "insecurity." Learned that communication alone couldn't fix fundamental incompatibilities.
+                </div>
+            </div>
+            
+            <div class="milestone-card">
+                <div class="milestone-title">Creative Renaissance</div>
+                <div class="milestone-date">Chicago Period</div>
+                <div class="milestone-description">
+                    Returned to music, continued visual art, worked with multiple models. Rebuilt artistic identity independent of the relationship.
+                </div>
+            </div>
+            
+            <div class="milestone-card">
+                <div class="milestone-title">Boundary Mastery</div>
+                <div class="milestone-date">Recent</div>
+                <div class="milestone-description">
+                    Successfully maintained polite but firm boundaries during renewed contact attempts. Achieved the balance of compassion without compromise.
+                </div>
+            </div>
+        </div>
+        
+        <div class="insights-section">
+            <h3 class="insights-title">Key Insights & Growth Areas</h3>
+            
+            <div class="insight-item">
+                <strong>Pattern Recognition:</strong> Developed ability to identify manipulation tactics, replacement strategies, and emotional withholding. Can now distinguish between genuine relationship problems and psychological manipulation.
+                <div class="growth-indicator">Self-Awareness</div>
+                <div class="growth-indicator">Boundary Setting</div>
+            </div>
+            
+            <div class="insight-item">
+                <strong>Emotional Resilience:</strong> Processed trauma without losing capacity for compassion. Maintained empathy for her struggles while protecting own wellbeing.
+                <div class="growth-indicator">Emotional Intelligence</div>
+                <div class="growth-indicator">Self-Protection</div>
+            </div>
+            
+            <div class="insight-item">
+                <strong>Creative Integration:</strong> Used artistic expression to process experiences and rebuild identity. Music and visual art became tools for healing and growth.
+                <div class="growth-indicator">Creative Expression</div>
+                <div class="growth-indicator">Identity Rebuilding</div>
+            </div>
+            
+            <div class="insight-item">
+                <strong>Relationship Wisdom:</strong> Learned to value genuine reciprocity over intensity. Understood the difference between accommodation and self-sacrifice.
+                <div class="growth-indicator">Relationship Skills</div>
+                <div class="growth-indicator">Self-Worth</div>
+            </div>
+            
+            <div class="insight-item">
+                <strong>Communication Clarity:</strong> Developed ability to express needs directly while maintaining compassion. Can now identify when communication is futile vs. productive.
+                <div class="growth-indicator">Communication</div>
+                <div class="growth-indicator">Discernment</div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="progressChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Healing Journey Timeline Chart
+        const ctx1 = document.getElementById('healingChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Relationship End', 'Initial Processing', 'No Contact Start', 'Chicago Move', 'Creative Return', 'Pattern Recognition', 'Boundary Success', 'Current State'],
+                datasets: [{
+                    label: 'Emotional Wellbeing',
+                    data: [20, 35, 45, 60, 70, 80, 85, 90],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Self-Awareness',
+                    data: [40, 50, 60, 65, 70, 85, 90, 95],
+                    borderColor: '#764ba2',
+                    backgroundColor: 'rgba(118, 75, 162, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Boundary Strength',
+                    data: [30, 40, 55, 60, 65, 75, 90, 95],
+                    borderColor: '#48bb78',
+                    backgroundColor: 'rgba(72, 187, 120, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Healing Progress Over Time',
+                        font: { size: 18 }
+                    },
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Progress Level'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Timeline'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Growth Areas Radar Chart
+        const ctx2 = document.getElementById('progressChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'radar',
+            data: {
+                labels: ['Self-Worth', 'Boundary Setting', 'Emotional Intelligence', 'Creative Expression', 'Communication Skills', 'Pattern Recognition', 'Resilience', 'Compassion Balance'],
+                datasets: [{
+                    label: 'Before Healing',
+                    data: [60, 40, 70, 75, 65, 30, 50, 80],
+                    borderColor: '#e53e3e',
+                    backgroundColor: 'rgba(229, 62, 62, 0.1)',
+                    borderWidth: 2
+                }, {
+                    label: 'Current State',
+                    data: [95, 95, 90, 90, 85, 95, 90, 95],
+                    borderColor: '#48bb78',
+                    backgroundColor: 'rgba(72, 187, 120, 0.2)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Personal Growth Areas: Before vs. Current',
+                        font: { size: 18 }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
